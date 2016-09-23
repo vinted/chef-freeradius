@@ -4,5 +4,5 @@ maintainer_email "ngmaloney@gmail.com"
 license          "All rights reserved"
 description      "Installs/Configures freeradius"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "1.0.16"
+version          "1.2.0"
 

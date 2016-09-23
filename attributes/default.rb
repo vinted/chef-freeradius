@@ -13,7 +13,7 @@ when 'rhel'
     default['freeradius']['pkgs'] = %w{ freeradius2 freeradius2-utils freeradius2-postgresql }
     default['freeradius']['ldap_pkgs'] = %w{ freeradius2-ldap }
   else
-    default['freeradius']['pkgs'] = %w{ freeradius freeradius-utils freeradius-postgresql }
+    default['freeradius']['pkgs'] = %w{ freeradius freeradius-utils freeradius-mysql }
     default['freeradius']['ldap_pkgs'] = %w{ freeradius-ldap }
   end
 when 'debian'
