@@ -1,5 +1,5 @@
 # OS Specific Attributes
-case platform_family
+case node['platform_family']
 when 'rhel'
   default['freeradius']['user'] = 'radiusd'
   default['freeradius']['group'] = 'radiusd'
@@ -9,7 +9,7 @@ when 'rhel'
   default['freeradius']['name'] = 'radiusd'
   default['freeradius']['libdir'] = '/usr/lib64/freeradius'
 # Packages to install since centos 5 is freeradius 2 and centos 6 is  just freeradius
-  if node.platform_version.to_f < 6
+  if node['platform_version'].to_f < 6
     default['freeradius']['pkgs'] = %w{ freeradius2 freeradius2-utils freeradius2-postgresql }
     default['freeradius']['ldap_pkgs'] = %w{ freeradius2-ldap }
   else
@@ -72,4 +72,4 @@ default['freeradius']['url'] = 'http://ftp.cc.uoc.gr/mirrors/ftp.freeradius.org/
 default['freeradius']['version'] = '2.1.10'
 default['freeradius']['checksum'] = 'b72d00d8d9c237b6bc3bfe89e6ccd99a7be63e699b305325ea60e04d5ddda4fe'
 default['freeradius']['prefix_dir'] = '/opt/local/freeradius'
-default['freeradius']['configure_options'] = %W{--prefix=#{freeradius[:prefix_dir]}/#{freeradius[:version]} --with-openssl-includes=/usr/include/openssl --with-openssl-libraries=/usr/lib}
+default['freeradius']['configure_options'] = %W{--prefix=#{node['freeradius']['prefix_dir']}/#{node['freeradius']['version']} --with-openssl-includes=/usr/include/openssl --with-openssl-libraries=/usr/lib}
