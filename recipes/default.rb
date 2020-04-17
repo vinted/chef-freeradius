@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-include_recipe "freeradius::#{node[:freeradius][:install_method]}"
+include_recipe "freeradius::#{node['freeradius']['install_method']}"
 
 if node['freeradius']['enable_ldap'] == true
   include_recipe 'freeradius::ldap'
@@ -22,7 +22,7 @@ end
 link '/etc/raddb/mods-enabled/sql' do
   to "#{node['freeradius']['dir']}/mods-available/sql"
   link_type :symbolic
-  only_if { node.platform_version.to_f >= 7 }
+  only_if { node['platform_version'].to_f >= 7 }
 end
 
 template "#{node['freeradius']['dir']}/clients.conf" do
